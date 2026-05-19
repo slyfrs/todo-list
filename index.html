@@ -14,28 +14,33 @@
     }
 
     :root {
-      --bg: #f0f2f8;
+      --bg: #fff0f6;
+      --bg-alt: #e8f9ff;
       --surface: #ffffff;
-      --text: #1a1d26;
-      --text-muted: #6b7280;
-      --accent: #6366f1;
-      --accent-hover: #4f46e5;
-      --accent-soft: rgba(99, 102, 241, 0.12);
-      --danger: #ef4444;
-      --danger-hover: #dc2626;
-      --danger-soft: rgba(239, 68, 68, 0.1);
-      --border: rgba(0, 0, 0, 0.06);
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
-      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.1);
-      --radius: 16px;
-      --radius-sm: 10px;
+      --text: #2a0a3d;
+      --text-muted: #9b5de5;
+      --accent: #ff2d95;
+      --accent-2: #00c9ff;
+      --accent-hover: #e6007a;
+      --accent-soft: rgba(255, 45, 149, 0.18);
+      --gradient: linear-gradient(135deg, #ff2d95 0%, #ff6b35 50%, #ffd23f 100%);
+      --gradient-bg: linear-gradient(145deg, #fff0f6 0%, #f0e6ff 35%, #e0f7ff 70%, #fff9e6 100%);
+      --danger: #ff3366;
+      --danger-hover: #e6004c;
+      --danger-soft: rgba(255, 51, 102, 0.15);
+      --border: rgba(255, 45, 149, 0.15);
+      --task-bg: linear-gradient(135deg, #fff5fb 0%, #f5f0ff 100%);
+      --shadow-sm: 0 2px 12px rgba(255, 45, 149, 0.1);
+      --shadow-md: 0 8px 28px rgba(155, 93, 229, 0.18);
+      --shadow-lg: 0 16px 48px rgba(0, 201, 255, 0.15);
+      --radius: 20px;
+      --radius-sm: 12px;
       --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      background: var(--bg);
+      background: var(--gradient-bg);
       color: var(--text);
       min-height: 100vh;
       display: flex;
@@ -57,9 +62,13 @@
 
     header h1 {
       font-size: 2rem;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 6px;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     header p {
@@ -71,6 +80,7 @@
       background: var(--surface);
       border-radius: var(--radius);
       box-shadow: var(--shadow-md);
+      border: 2px solid rgba(255, 255, 255, 0.8);
       padding: 24px;
       margin-bottom: 20px;
     }
@@ -88,7 +98,7 @@
       font-size: 1rem;
       font-family: inherit;
       color: var(--text);
-      background: var(--bg);
+      background: #fff;
       transition: border-color var(--transition), box-shadow var(--transition);
       outline: none;
     }
@@ -123,14 +133,15 @@
     }
 
     .btn-primary {
-      background: var(--accent);
+      background: var(--gradient);
       color: #fff;
-      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+      box-shadow: 0 4px 18px rgba(255, 45, 149, 0.45);
     }
 
     .btn-primary:hover {
-      background: var(--accent-hover);
-      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+      filter: brightness(1.08) saturate(1.1);
+      box-shadow: 0 6px 24px rgba(255, 107, 53, 0.5);
+      transform: scale(1.02);
     }
 
     .stats {
@@ -177,7 +188,8 @@
       align-items: center;
       gap: 12px;
       padding: 14px 16px;
-      background: var(--bg);
+      background: var(--task-bg);
+      border: 1px solid var(--border);
       border-radius: var(--radius-sm);
       box-shadow: var(--shadow-sm);
       transition: box-shadow var(--transition), opacity var(--transition), transform var(--transition);
@@ -200,7 +212,9 @@
     }
 
     .task-item.done {
-      opacity: 0.65;
+      opacity: 0.7;
+      background: linear-gradient(135deg, #f0fff4 0%, #e8fff9 100%);
+      border-color: rgba(0, 201, 255, 0.25);
     }
 
     .task-item.done .task-text {
@@ -227,15 +241,15 @@
       display: block;
       width: 22px;
       height: 22px;
-      border: 2px solid #d1d5db;
+      border: 2px solid #ffb3d9;
       border-radius: 6px;
       background: var(--surface);
       transition: background var(--transition), border-color var(--transition), transform var(--transition);
     }
 
     .checkbox input:checked + .checkbox-mark {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: var(--gradient);
+      border-color: transparent;
     }
 
     .checkbox input:checked + .checkbox-mark::after {
